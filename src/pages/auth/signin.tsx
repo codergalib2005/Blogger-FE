@@ -1,5 +1,14 @@
-import React from 'react';
+/* eslint-disable prettier/prettier */
+/* eslint-disable simple-import-sort/imports */
+ import Login from "@/components/login/Login";
+ 
+
+ 
 
 export default function Signin() {
-  return <div>Sign in</div>;
+  return (
+    <div>
+      <Login />
+    </div>
+  );
 }

@@ -25,6 +25,7 @@
     "postprocessing": "^6.28.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-hook-form": "^7.43.9",
     "react-icons": "^4.8.0",
     "react-syntax-highlighter": "^15.5.0",
     "three": "^0.141.0"

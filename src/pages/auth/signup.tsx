@@ -3,7 +3,7 @@ import { FcGoogle } from 'react-icons/fc';
 
 import Button from '@/components/button';
 import Input from '@/components/input';
-import NavLink from '@/components/Link';
+import NavLink from '@/components/link';
 
 const Signup = () => {
   const text = "Don't have an account?";

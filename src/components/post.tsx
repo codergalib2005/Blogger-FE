@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import NavLink from './Link';
+import NavLink from './link';
 
 export default function Post({ item }: any) {
   return (

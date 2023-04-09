@@ -1,5 +1,5 @@
 import Button from '@/components/button';
-import NavLink from '@/components/Link';
+import NavLink from '@/components/link';
 
 import Container from './Container';
 
