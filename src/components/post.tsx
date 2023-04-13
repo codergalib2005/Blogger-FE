@@ -20,7 +20,7 @@ export default function Post({ item }: any) {
             <h2 className="mb-2 text-base font-medium">
               No core utilities, all functionalities are provide via presets.
             </h2>
-            <Link href="/" className="underline-none text-lg">
+            <Link href="/" className=" text-lg">
               Getting Started
             </Link>
           </div>
