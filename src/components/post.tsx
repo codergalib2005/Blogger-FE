@@ -1,24 +1,29 @@
-import Image from 'next/image';
+import Link from 'next/link';
+import { SiIledefrancemobilites } from 'react-icons/si';
 
 import NavLink from './link';
 
 export default function Post({ item }: any) {
   return (
     <NavLink href={`/?tab=${item + 1}`}>
-      <div className="grid h-28 grid-cols-3 rounded-md bg-[#242D3C] p-2">
-        <div className="col-span-1 flex items-center justify-center">
-          <div className="relative h-20 w-20">
-            <Image
-              layout="fill"
-              src="https://egghead.io/_next/image?url=https%3A%2F%2Fd2eip9sf3oo6c2.cloudfront.net%2Fplaylists%2Fsquare_covers%2F000%2F432%2F520%2Fthumb%2FEGH_React_Mobx_TS.png&w=256&q=100"
-            />
+      <div className="h-48 rounded-md border-indigo-600 bg-[#242D3C] p-2 shadow-md hover:border-2 md:h-44 ">
+        <div className="col-span-1  mx-3  ">
+          <div className="flex justify-start">
+            <SiIledefrancemobilites className=" h-8 w-8" />
           </div>
         </div>
-        <div className="col-span-2">
-          <strong className="text-xs text-red-400">COURSE</strong>
-          <h2 className="font-medium">
-            Develop React Applications with Mobx and TypeScript
-          </h2>
+        <div className="col-span-2 my-3">
+          <div className="">
+            <strong className="text-base text-red-400">
+              Fully Customizable
+            </strong>
+            <h2 className="mb-2 text-base font-medium">
+              No core utilities, all functionalities are provide via presets.
+            </h2>
+            <Link href="/" className="underline-none text-lg">
+              Getting Started
+            </Link>
+          </div>
         </div>
       </div>
     </NavLink>
