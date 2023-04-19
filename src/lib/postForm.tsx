@@ -1,72 +1,81 @@
+import 'codemirror/lib/codemirror.css';
+import 'codemirror/theme/material.css';
+import 'codemirror/mode/javascript/javascript';
+
 import React, { useState } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Controlled as CodeMirror } from 'react-codemirror2';
 
-function PostForm() {
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
-  const [code, setCode] = useState('');
+interface BlogPost {
+  title: string;
+  content: string;
+  code: string;
+}
+export default function PostForm() {
+  const [blogPost, setBlogPost] = useState<BlogPost>({
+    title: '',
+    content: '',
+    code: '',
+  });
 
-  const handleSubmit = (event: any) => {
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setBlogPost({ ...blogPost, title: event.target.value });
+  };
+
+  const handleContentChange = (
+    event: React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setBlogPost({ ...blogPost, content: event.target.value });
+  };
+
+  const handleCodeChange = (editor: any, data: any, value: string) => {
+    setBlogPost({ ...blogPost, code: value });
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const post = {
-      title,
-      body,
-      code,
-    };
-
-    fetch('https://example.com/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(post),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
+    // code to submit blog post
+    // once the blog post is submitted, navigate back to the blog list page
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Title:
-        <input
-          type="text"
-          value={title}
-          onChange={(event) => setTitle(event.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Body:
-        <textarea
-          value={body}
-          onChange={(event) => setBody(event.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Code:
-        <textarea
-          value={code}
-          onChange={(event) => setCode(event.target.value)}
-        />
-      </label>
-      <br />
-      <button type="submit">Submit</button>
-      {code && (
-        <SyntaxHighlighter language="javascript" style={tomorrow}>
-          {code}
-        </SyntaxHighlighter>
-      )}
-    </form>
+    <>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="title">Title</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={blogPost.title}
+            onChange={handleTitleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="content">Content</label>
+          <textarea
+            id="content"
+            name="content"
+            value={blogPost.content}
+            onChange={handleContentChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="code">Code</label>
+          <CodeMirror
+            value={blogPost.code}
+            options={{
+              mode: 'javascript',
+              theme: 'material',
+              lineNumbers: true,
+            }}
+            onBeforeChange={(editor, data, value) => {
+              handleCodeChange(editor, data, value);
+            }}
+            onChange={(_editor, _data, _value) => {}}
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </>
   );
 }
-
-export default PostForm;
