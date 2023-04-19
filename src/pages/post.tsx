@@ -30,7 +30,7 @@ export default function Post() {
     setBlogPost({ ...blogPost, content: event.target.value });
   };
 
-  const handleCodeChange = (editor: any, data: any, value: string) => {
+  const handleCodeChange = (_editor: any, _data: any, value: string) => {
     setBlogPost({ ...blogPost, code: value });
   };
 
@@ -75,7 +75,7 @@ export default function Post() {
             onBeforeChange={(editor, data, value) => {
               handleCodeChange(editor, data, value);
             }}
-            onChange={(editor, data, value) => {}}
+            onChange={(_editor, _data, _value) => {}}
           />
         </div>
         <button type="submit">Submit</button>

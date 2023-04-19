@@ -27,7 +27,7 @@ export default function PostForm() {
     setBlogPost({ ...blogPost, content: event.target.value });
   };
 
-  const handleCodeChange = (editor: any, data: any, value: string) => {
+  const handleCodeChange = (_editor: any, _data: any, value: string) => {
     setBlogPost({ ...blogPost, code: value });
   };
 
